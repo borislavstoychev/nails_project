@@ -1,0 +1,3 @@
+{% if not is_complete %}
+    <h7 style="color: #e6a756"> Your profile is incomplete. Complete it <a href="{% url 'profile details' user_id %}">here</a>!</h7>
+{% endif %}

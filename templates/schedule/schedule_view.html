@@ -1,0 +1,32 @@
+{% extends 'common/base.html' %}
+{% block content %}
+    <section class="page-section cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <div class="cta-inner bg-faded text-center rounded">
+                        <h2 class="section-heading mb-5">
+                            <span class="section-heading-upper">Come On In</span>
+                            <span class="section-heading-lower">{{ current_month }}</span>
+                        </h2>
+                        {% include 'schedule/schedule_table.html' %}
+                        <p class="address mb-5">
+                            <em>
+                                <strong>116 Rockefeller Street</strong>
+                                <br/>
+                                Blagoevgrad, Petrich
+                            </em>
+                        </p>
+                        <p class="mb-0">
+                            <small><em>Call me</em></small>
+                            <br/>
+                            (+359) 585-8468
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'nails/about_base.html' %}
+{% endblock %}
+

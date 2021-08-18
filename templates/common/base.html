@@ -1,3 +1,5 @@
+{% load static %}
+{% load profile_comlete_notification %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +8,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
     <title>Business Casual - Start Bootstrap Theme</title>
-    <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}"/>
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -14,17 +16,22 @@
           rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="static/css/styles.css" rel="stylesheet"/>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
 </head>
 <body>
 {% include 'common/header.html' %}
-{% include 'common/navi_bar.html' %}
+{% if user.is_authenticated %}
+    {% include 'common/navi_bar_with_user.html' %}
+    {% profile_complete_notification %}
+{% else %}
+    {% include 'common/navi_bar_without_user.html' %}
+{% endif %}
 {% block content %}
 {% endblock %}
 {% include 'common/footer.html' %}+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="js/scripts.js"></script>
+<script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>

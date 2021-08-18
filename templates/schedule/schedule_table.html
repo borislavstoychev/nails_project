@@ -1,0 +1,110 @@
+<p></p>
+<div id="table_container">
+    <section>
+        <h2>Schedule</h2>
+    </section>
+
+    <section class="table">
+        <div class="container">
+            <table class="table-active" style='color: black'>
+                <thead>
+                <th class="border">MON</th>
+                <th class="border">TUE</th>
+                <th class="border">WED</th>
+                <th class="border">THU</th>
+                <th class="border">FRI</th>
+                <th class="border">SAT</th>
+                <th class="border">SUN</th>
+                </thead>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                            </tr>
+                            {% for day1 in monday %}
+                                <tr class="border">
+                                    <td>{{ day1 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+
+                    <td>
+                        <table>
+                            <tr>
+                            </tr>
+                            {% for day2 in tuesday %}
+                                <tr class="border">
+                                    <td>{{ day2 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+
+                    <td>
+                        <table>
+                            <tr>
+                            </tr>
+                            {% for day3 in wednesday %}
+                                <tr class="border">
+                                    <td>{{ day3 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+
+                    <td>
+                        <table>
+                            <tr>
+                            </tr>
+                            {% for day4 in thursday %}
+                                <tr class="border">
+                                    <td>{{ day4 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+
+                    <td>
+                        <table>
+                            <tr>
+                            </tr>
+                            {% for day5 in friday %}
+                                <tr class="border">
+                                    <td>{{ day5 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+
+                    <td>
+                        <table>
+                            <tr>
+                            </tr>
+                            {% for day6 in saturday %}
+                                <tr class="border">
+                                    <td>{{ day6 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+
+                    <td>
+                        <table>
+                            <tr>
+                            </tr>
+                            {% for day7 in sunday %}
+                                <tr class="border">
+                                    <td>{{ day7 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+                <tr class="border">
+                    <td colspan="7">Thank you for choosing me!</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+</div>

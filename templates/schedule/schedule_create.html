@@ -1,0 +1,35 @@
+{% extends 'common/base.html' %}
+{% block content %}
+    <p></p>
+    <div class="container">
+        <form class="w-50 m-auto" method="post"
+              style="border: 1px solid grey; color: #e6a756; margin: 10% 0%; padding: 5% 5%"
+              action="{% url 'schedule create' %}">
+            <h2>Create Schedule</h2>
+            {% csrf_token %}
+            {{ form }}
+            <p></p>
+            <button class="btn btn-primary mt-2" type="submit">Create</button>
+            <p></p>
+        </form>
+    </div>
+    <section class="page-section about-heading">
+        <div class="container">
+            <div class="about-heading-content">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-10 mx-auto">
+                        <div class="bg-faded rounded p-5">
+                            <h2 class="section-heading mb-4">
+                                <span class="section-heading-upper">Delete on click</span>
+                                <span class="section-heading-lower">Schedule</span>
+                            </h2>
+                            {% for schedule in schedules %}
+                            <p><a href="{% url 'delete schedule' schedule.id %}">{{ schedule }}</a></p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

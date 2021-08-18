@@ -1,0 +1,19 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+    <p></p>
+    <div class="container">
+        <form class="w-50 m-auto" method="post" style="border: 1px solid grey; color: #e6a756; margin: 10% 0%; padding: 5% 5%"
+              action="{% url 'sign up user' %}">
+            <h2>Sign Up</h2>
+            {% csrf_token %}
+            {{ form }}
+            <p></p>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <p></p>
+            <span>Have an account?<a href="{% url 'sign in user' %}"
+                                             style="color:orange"> Sign in here</a></span>
+        </form>
+    </div>
+    <p></p>
+{% endblock %}

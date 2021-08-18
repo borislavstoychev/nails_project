@@ -68,7 +68,7 @@ class SignInView(LoginView):
     form_class = SignInForm
 
     def get_success_url(self):
-        return reverse('home')
+        return reverse('home page')
 
 
 class SignOutView(View):
@@ -81,7 +81,7 @@ class ProfileUpdateView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
     model = Profile
     context_object_name = 'profile'  # your own name for the list as a template variable
     form_class = ProfileForm
-    template_name = 'account/profiles/profile_details.html'
+    template_name = 'account/profile/profile_details.html'
 
     def get_success_url(self):
         url = reverse_lazy('profile details', kwargs={'pk': self.request.user.id})
@@ -97,7 +97,7 @@ class ProfileUpdateView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
 
 class ProfileDeleteView(auth_mixins.LoginRequiredMixin, generic.DeleteView):
     model = UserModel
-    template_name = 'account/profiles/profile_delete.html'
+    template_name = 'account/profile/profile_delete.html'
     success_url = reverse_lazy('sign up user')
 
     def dispatch(self, request, *args, **kwargs):

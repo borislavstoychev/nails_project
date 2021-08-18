@@ -12,3 +12,4 @@ class BootstrapFormMixin:
                 field.widget.attrs['class'] = 'form-select'
             else:
                 field.widget.attrs['class'] = 'form-control'
+

@@ -1,0 +1,39 @@
+{% for nail in nails %}
+    <section class="page-section">
+        <div class="container">
+            <div class="product-item">
+                <div class="product-item-title d-flex">
+                    <div class="bg-faded p-5 d-flex ms-auto rounded">
+                        <h2 class="section-heading mb-0">
+                            <span class="text-lowercase">{{ nail.user }}</span>
+                            <span class="section-heading-upper">{{ nail.type }}</span>
+                            <span class="section-heading-lower">{{ nail.feedback }}</span>
+                        </h2>
+                    </div>
+                </div>
+                {% if nail.user == request.user %}
+                    <a href="{% url 'edit nails' nail.pk %}">
+                        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
+                             src="{{ nail.image.url }}"
+                             alt="..."/></a>
+                    <div class="product-item-description d-flex me-auto">
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">{{ nail.description }}</p>
+                            <p class="mt-2">Likes: {{ nail.like_set.count }}</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <a href="{% url 'nails details' nail.pk %}">
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
+                         src="{{ nail.image.url }}"
+                         alt="..."/></a>
+                    <div class="product-item-description d-flex me-auto">
+                        <div class="bg-faded p-5 rounded"><p class="mb-0">{{ nail.description }}</p>
+                            <a href="{% url 'like nails' nail.pk %}">Like</a>
+                            <p class="mt-2">Likes: {{ nail.like_set.count }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endfor %}

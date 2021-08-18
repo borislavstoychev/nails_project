@@ -1,0 +1,58 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="text-center">
+        <h1 style="color: #e6a756">Hello, {{ user.profile.first_name }}!</h1>
+        {% if profile.user == user %}
+            <h5 style="color: #e6a756">This is your profile</h5>
+        {% else %}
+            <h5 style="color: #e6a756">This is {{ profile.user }} profile</h5>
+        {% endif %}
+        {% if profile.profile_image %}
+            <img class="rounded-circle mb-3" src="{{ profile.profile_image.url }}" alt="" width="180"
+                 height="180">
+        {% else %}
+            <img class="rounded-circle mb-3" src="{% static 'images/profile.jpeg' %}" alt="" width="140"
+                 height="140">
+        {% endif %}
+        <div class="w-50 m-auto">
+            {% if profile.user == user %}
+                <form class="w-50 m-auto" method="post"
+                      style="border: 1px solid grey; color: #e6a756; margin: 10% 0%; padding: 5% 5%"
+                      action="{% url 'profile details' user.id %}" enctype="multipart/form-data">
+                    <h2>Edit your data</h2>
+                    {% csrf_token %}
+                    {{ form }}
+                    <button class="btn btn-primary mt-2">Update</button>
+                    {% if not user.is_staff %}
+                        <a class="btn btn-danger mt-2" href="{% url 'profile delete' user.id %}">Delete profile</a>
+                    {% else %}
+                        <a class="btn btn-danger mt-2" href="{% url 'schedule create' %}">Make yor schedule</a>
+                    {% endif %}
+                    <p></p>
+                    <span>If you want to change your password<a href="{% url 'password_change' %}"
+                                                                style="color:orange"> click here!</a></span>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    <hr style="color: #e6a756">
+    {% if nails %}
+        {% if profile.user == user %}
+            <h2 class='text-center' style="color: #e6a756">These are your feedback photos</h2>
+        {% else %}
+            <h2 class='text-center' style="color: #e6a756">These are his feedback photos</h2>
+        {% endif %}
+        {% include 'nails/nails_all.html' %}
+    {% else %}
+        <div class="text-center">
+            {% if profile.user_id == request.user.id %}
+                <h2 style="color: #e6a756">You have no feedback</h2>
+                <a href="{% url 'create nails' %}" class="btn btn-success">Leave Feedback</a>
+            {% else %}
+                <h2 style="color: #e6a756">This user has no feedback photos</h2>
+            {% endif %}
+        </div>
+    {% endif %}
+    <p></p>
+{% endblock %}

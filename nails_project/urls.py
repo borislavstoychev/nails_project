@@ -19,4 +19,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('nails_project.nails.urls')),
+    path('profile/', include('nails_project.accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('schedule/', include('nails_project.schedule.urls')),
 ]
