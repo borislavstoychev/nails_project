@@ -12,7 +12,7 @@
     * [2.2. Feedback](#section_2_2)
         * [2.2.1. Feedback Characteristics](#section_2_2_1)
         * [2.2.2. Feedback Likes](#section_2_2_2)
-* [3. Tests Coverage](#section_3)
+* [3. Tests Coverage](#chapter3)
 * [4. Additional Developments](#chapter4)
 
 ### 1. Introduction <a class="anchor" id="chapter1"></a>
@@ -109,7 +109,7 @@ The ***feedback likes*** has the following fields:
 ### 3. Tests Coverage <a class="anchor" id="chapter3"></a>
 
 
-### 5. Additional Developments <a class="anchor" id="chapter5"></a>
+### 4. Additional Developments <a class="anchor" id="chapter4"></a>
 
 - :heavy_check_mark: Responsive web design
 - :heavy_check_mark: Class-based views
