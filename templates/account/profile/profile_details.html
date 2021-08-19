@@ -17,7 +17,7 @@
         {% endif %}
         <div class="w-50 m-auto">
             {% if profile.user == user %}
-                <form class="w-50 m-auto" method="post"
+                <form class="w-40 m-auto" method="post"
                       style="border: 1px solid grey; color: #e6a756; margin: 10% 0%; padding: 5% 5%"
                       action="{% url 'profile details' user.id %}" enctype="multipart/form-data">
                     <h2>Edit your data</h2>

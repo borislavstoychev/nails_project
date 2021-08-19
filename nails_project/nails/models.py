@@ -24,7 +24,7 @@ class Nails(models.Model):
     )
     type = models.CharField(max_length=10, choices=NAILS_TYPE, default=MANICURE)
     feedback = models.CharField(max_length=10, choices=FEEDBACK_TYPE, default=POSITIVE)
-    description = models.TextField(blank=False)
+    description = models.TextField(blank=False, max_length=200)
     image = CloudinaryField(
         resource_type='image',
     )

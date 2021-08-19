@@ -6,7 +6,7 @@
                 <div class="product-item-title d-flex">
                     <div class="bg-faded p-5 d-flex ms-auto rounded">
                         <h2 class="section-heading mb-0">
-                            <span class="text-lowercase">{{ nails.user }}</span>
+                            <span class="text-lowercase"><a href="{% url 'profile details' nails.user_id %}">{{ nails.user }}</a></span>
                             <span class="section-heading-upper">{{ nails.type }}</span>
                             <span class="section-heading-lower">{{ nails.feedback }}</span>
                         </h2>
