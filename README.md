@@ -94,7 +94,7 @@ The ***nails*** has the following fields:
 - user - ForeignKey relation with nails user
 
 
-##### 2.2.2 nails Likes <a class="anchor" id="section_2_2_2"></a>
+##### 2.2.2 Nails Likes <a class="anchor" id="section_2_2_2"></a>
 
 The ***nails likes*** are public. It can be viewed by all types of users. The author and
 anonymous users can't like the ***nails***. Only the other users can like it. Once the like object is created by a
