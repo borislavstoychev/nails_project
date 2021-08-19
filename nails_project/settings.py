@@ -13,6 +13,7 @@ import os
 from os.path import join
 from pathlib import Path
 import cloudinary as cloudinary
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.urls import reverse_lazy
@@ -166,3 +167,5 @@ cloudinary.config(
     api_secret=os.environ.get('CLOUDINARY_API_SECRET', 'BKCV2drakVfajaxoSK7NCWXMAMw'),
     secure=True,
 )
+
+django_heroku.settings(locals())
