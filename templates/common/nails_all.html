@@ -11,28 +11,15 @@
                         </h2>
                     </div>
                 </div>
-                {% if nail.user == request.user %}
-                    <a href="{% url 'edit nails' nail.pk %}">
-                        <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
-                             src="{{ nail.image.url }}"
-                             alt="..."/></a>
-                    <div class="product-item-description d-flex me-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">{{ nail.description }}</p>
-                            <p class="mt-2">Likes: {{ nail.like_set.count }}</p>
-                        </div>
-                    </div>
-                {% else %}
                     <a href="{% url 'nails details' nail.pk %}">
-                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
+                    <img class="card-img-top mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
                          src="{{ nail.image.url }}"
                          alt="..."/></a>
                     <div class="product-item-description d-flex me-auto">
                         <div class="bg-faded p-5 rounded"><p class="mb-0">{{ nail.description }}</p>
-                            <a href="{% url 'like nails' nail.pk %}">Like</a>
                             <p class="mt-2">Likes: {{ nail.like_set.count }}</p>
                         </div>
                     </div>
-                {% endif %}
             </div>
         </div>
     </section>

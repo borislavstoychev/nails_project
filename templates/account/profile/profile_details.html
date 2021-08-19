@@ -12,7 +12,7 @@
             <img class="rounded-circle mb-3" src="{{ profile.profile_image.url }}" alt="" width="180"
                  height="180">
         {% else %}
-            <img class="rounded-circle mb-3" src="{% static 'images/profile.jpeg' %}" alt="" width="140"
+            <img class="rounded-circle mb-3" src="{% static 'assets/img/profile.jpg' %}" alt="" width="140"
                  height="140">
         {% endif %}
         <div class="w-50 m-auto">
@@ -39,18 +39,18 @@
     <hr style="color: #e6a756">
     {% if nails %}
         {% if profile.user == user %}
-            <h2 class='text-center' style="color: #e6a756">These are your feedback photos</h2>
+            <h2 class='text-center' style="color: #e6a756">These are your feedback</h2>
         {% else %}
-            <h2 class='text-center' style="color: #e6a756">These are his feedback photos</h2>
+            <h2 class='text-center' style="color: #e6a756">These are his feedback</h2>
         {% endif %}
-        {% include 'nails/nails_all.html' %}
+        {% include 'common/nails_all.html' %}
     {% else %}
         <div class="text-center">
             {% if profile.user_id == request.user.id %}
                 <h2 style="color: #e6a756">You have no feedback</h2>
                 <a href="{% url 'create nails' %}" class="btn btn-success">Leave Feedback</a>
             {% else %}
-                <h2 style="color: #e6a756">This user has no feedback photos</h2>
+                <h2 style="color: #e6a756">This user has no feedback</h2>
             {% endif %}
         </div>
     {% endif %}
