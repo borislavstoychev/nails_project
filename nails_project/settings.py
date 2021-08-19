@@ -131,10 +131,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = ''
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 STATICFILES_DIRS = (
-    join(BASE_DIR, 'static'),
+    BASE_DIR / 'static',
 )
+
 
 MEDIA_URL = '/media/'
 
