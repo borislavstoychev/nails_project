@@ -82,7 +82,7 @@ class NailsEditView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
     form_class = NailsForm
 
     def get_success_url(self):
-        url = reverse_lazy('list nails')
+        url = reverse_lazy('nails details', kwargs={'pk': self.object.id})
         return url
 
     def dispatch(self, request, *args, **kwargs):
