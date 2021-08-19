@@ -23,14 +23,14 @@ class NailsListViewTest(NailsTestUtils, UserTestUtils,NailsProjectTestCase):
 
     def test_getList_whenLoggedInUserWithNails_shouldGetListWithNails(self):
         self.client.force_login(self.user)
-        nails = self.create_nails(
+        nails = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test',
             description='Test nails description',
             image='path/to/image.png',
             user=self.user,
         )
-        nails2 = self.create_nails(
+        nails2 = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test2',
             description='Test2 nails description',
@@ -42,14 +42,14 @@ class NailsListViewTest(NailsTestUtils, UserTestUtils,NailsProjectTestCase):
         self.assertEqual(2, len(list(response.context['nails'])))
 
     def test_getList_whenNotLoggedInUserWithNails_shouldGetListWithNails(self):
-        nails = self.create_nails(
+        nails = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test',
             description='Test nails description',
             image='path/to/image.png',
             user=self.user,
         )
-        nails2 = self.create_nails(
+        nails2 = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test2',
             description='Test2 nails description',

@@ -8,17 +8,17 @@ UserModel = get_user_model()
 
 class NailsTestUtils:
 
-    def create_nails(self, **kwargs):
+    def create_feedback(self, **kwargs):
         return Feedback.objects.create(**kwargs)
 
 
-    def create_nails_with_like(self, like_user, **kwargs):
-        nails = self.create_nails(**kwargs)
+    def create_feedback_with_like(self, like_user, **kwargs):
+        feedback = self.create_feedback(**kwargs)
         Like.objects.create(
-            nails=nails,
+            feedback=feedback,
             user=like_user,
         )
-        return nails
+        return feedback
 
 
 class ScheduleTestUtils:

@@ -18,7 +18,7 @@ class NailsEditTest(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
 
     def test_editNails_whenNailsExistsAndIsOwner_shouldReturnDetailsForNails(self):
         self.client.force_login(self.user)
-        nails = self.create_nails(
+        nails = self.create_feedback(
             type=Feedback.MANICURE,
             feedback=Feedback.POSITIVE,
             description='Test nails description',
@@ -49,7 +49,7 @@ class NailsEditTest(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
     def test_editNails_whenNailsExistsAndNotOwner_shouldReturnForbidden(self):
         self.client.force_login(self.user)
         nails_user = self.create_user(email='nails@user.com', password='12345qwe', is_active=True)
-        nails = self.create_nails(
+        nails = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test',
             description='Test nails description',

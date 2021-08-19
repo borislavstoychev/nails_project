@@ -13,6 +13,6 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Like)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('nails', 'user')
-    list_filter = ('nails', 'user' )
+    list_display = ('feedback', 'user',)
+    list_filter = ('feedback', 'user', )
     ordering = ('user',)

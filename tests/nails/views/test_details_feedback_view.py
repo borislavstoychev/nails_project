@@ -9,7 +9,7 @@ class NailsDetailsTest(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
 
     def test_NailsDetailsVieName_and_templateName(self):
         self.client.force_login(self.user)
-        nails = self.create_nails(
+        nails = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test',
             description='Test nails description',
@@ -31,7 +31,7 @@ class NailsDetailsTest(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
 
     def test_getNailsDetails_whenNailsExistsAndIsOwner_shouldReturnDetailsForNails(self):
         self.client.force_login(self.user)
-        nails = self.create_nails(
+        nails = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test',
             description='TEst nails description',
@@ -49,7 +49,7 @@ class NailsDetailsTest(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
     def test_getNailsDetails_whenNailsExistsAndIsNotOwnerAndNotLiked_shouldReturnDetailsForNails(self):
         self.client.force_login(self.user)
         nails_user = self.create_user(email='nails@user.com', password='12345qwe', is_active=True)
-        nails = self.create_nails(
+        nails = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test',
             description='TEst nails description',
@@ -68,7 +68,7 @@ class NailsDetailsTest(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
     def test_getNailsDetails_whenNailsExistsAndIsNotOwnerAndLiked_shouldReturnDetailsForNails(self):
         self.client.force_login(self.user)
         nails_user = self.create_user(email='nails@user.com', password='12345qwe', is_active=True)
-        nails = self.create_nails_with_like(
+        nails = self.create_feedback_with_like(
             like_user=self.user,
             type=Feedback.MANICURE,
             feedback='Test',

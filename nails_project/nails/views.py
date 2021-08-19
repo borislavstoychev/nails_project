@@ -39,18 +39,18 @@ class FeedbackLikeView(auth_mixins.LoginRequiredMixin, generic.View):
 
     def get(self, request, **kwargs):
         user_profile = self.request.user
-        nails = Feedback.objects.get(pk=kwargs['pk'])
-        like = nails.like_set.filter(user_id=user_profile.id).first()
+        feedback = Feedback.objects.get(pk=kwargs['pk'])
+        like = feedback.like_set.filter(user_id=user_profile.id).first()
         if like:
             like.delete()
         else:
             like = Like(
                 user=user_profile,
-                nails=nails,
+                feedback=feedback,
             )
             like.save()
 
-        return redirect('feedback details', nails.id)
+        return redirect('feedback details', feedback.id)
 
     def dispatch(self, request, *args, **kwargs):
         user_profile = self.request.user

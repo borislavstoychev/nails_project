@@ -35,7 +35,7 @@ class Feedback(models.Model):
 
 
 class Like(models.Model):
-    nails = models.ForeignKey(Feedback, on_delete=models.CASCADE)
+    feedback = models.ForeignKey(Feedback, on_delete=models.CASCADE)
     user = models.ForeignKey(
         UserModel,
         on_delete=models.CASCADE,

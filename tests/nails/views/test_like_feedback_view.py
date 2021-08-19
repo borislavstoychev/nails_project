@@ -9,7 +9,7 @@ class LikePetViewTests(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
     def test_likeNails_whenNailsNotLiked_shouldCreateLike(self):
         self.client.force_login(self.user)
         nails_user = self.create_user(email='nails@user.com', password='12345qwe', is_active=True)
-        nails = self.create_nails(
+        feedback = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test',
             description='Test nails description',
@@ -18,14 +18,14 @@ class LikePetViewTests(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
         )
 
         response = self.client.get(reverse('feedback like', kwargs={
-            'pk': nails.id,
+            'pk': feedback.id,
         }))
 
         self.assertEqual(302, response.status_code)
 
         like_exists = Like.objects.filter(
             user_id=self.user.id,
-            nails_id=nails.id,
+            feedback_id=feedback.id,
         ) \
             .exists()
 
@@ -34,7 +34,7 @@ class LikePetViewTests(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
     def test_likeNails_whenNailsAlreadyLiked_shouldDeleteTheLike(self):
         self.client.force_login(self.user)
         nails_user = self.create_user(email='pet@user.com', password='12345qwe', is_active=True)
-        nails = self.create_nails_with_like(
+        feedback = self.create_feedback_with_like(
             like_user=self.user,
             type=Feedback.MANICURE,
             feedback='Test',
@@ -44,14 +44,14 @@ class LikePetViewTests(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
         )
 
         response = self.client.get(reverse('feedback like', kwargs={
-            'pk': nails.id,
+            'pk': feedback.id,
         }))
 
         self.assertEqual(302, response.status_code)
 
         like_exists = Like.objects.filter(
             user_id=self.user.id,
-            nails_id=nails.id,
+            feedback_id=feedback.id,
         ) \
             .exists()
 
@@ -59,7 +59,7 @@ class LikePetViewTests(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
 
     def test_likeNails_whenNails_userIsOwner_shouldBeForbidden(self):
         self.client.force_login(self.user)
-        nails = self.create_nails_with_like(
+        feedback = self.create_feedback_with_like(
             like_user=self.user,
             type=Feedback.MANICURE,
             feedback='Test',
@@ -69,7 +69,7 @@ class LikePetViewTests(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
         )
 
         response = self.client.get(reverse('feedback like', kwargs={
-            'pk': nails.id,
+            'pk': feedback.id,
         }))
 
         self.assertEqual(403, response.status_code)

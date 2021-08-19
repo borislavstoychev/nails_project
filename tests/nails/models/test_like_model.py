@@ -8,7 +8,7 @@ class LikeModelTests(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
 
     def test_saveModel_whenValid_shouldBeValid(self):
         nails_user = self.create_user(email='nails@user.com', password='12345qwe', is_active=True)
-        nails = self.create_nails(
+        feedback = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test',
             description='Test nails description',
@@ -16,18 +16,18 @@ class LikeModelTests(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
             user=nails_user,
         )
         data = {
-            'nails': nails,
+            'feedback': feedback,
             'user': self.user,
         }
         obj = Like(**data)
         obj.full_clean()
         obj.save()
-        self.assertEqual(nails, obj.nails)
+        self.assertEqual(feedback, obj.feedback)
         self.assertEqual(self.user, obj.user)
-        self.assertTrue(Like.objects.filter(nails_id=nails.id).exists())
+        self.assertTrue(Like.objects.filter(feedback_id=feedback.id).exists())
 
     def test_saveModel_whenInvalid_shouldBeInvalid(self):
-        nails = self.create_nails(
+        feedback = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test',
             description='Test nails description',
@@ -35,12 +35,12 @@ class LikeModelTests(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
             user=self.user,
         )
         data = {
-            'nails': nails,
+            'feedback': feedback,
         }
         with self.assertRaises(ValidationError) as error:
             like = Like(**data)
             like.full_clean()
             like.save()
         self.assertIsNotNone(error)
-        self.assertNotEqual(nails.like_set, 0)
-        self.assertFalse(Like.objects.filter(nails_id=nails.id).exists())
+        self.assertNotEqual(feedback.like_set, 0)
+        self.assertFalse(Like.objects.filter(feedback_id=feedback.id).exists())

@@ -9,7 +9,7 @@ class NailsDeleteTest(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
 
     def test_NailsDeleteVieName_and_templateName(self):
         self.client.force_login(self.user)
-        nails = self.create_nails(
+        nails = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test',
             description='Test nails description',
@@ -31,7 +31,7 @@ class NailsDeleteTest(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
 
     def test_deleteNails_whenNailsExistsAndIsOwner_shouldReturnAllNails(self):
         self.client.force_login(self.user)
-        nails = self.create_nails(
+        nails = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test',
             description='Test nails description',
@@ -56,7 +56,7 @@ class NailsDeleteTest(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
     def test_deleteNails_whenNailsExistsAndNotOwner_shouldReturnForbidden(self):
         self.client.force_login(self.user)
         nails_user = self.create_user(email='nails@user.com', password='12345qwe', is_active=True)
-        nails = self.create_nails(
+        nails = self.create_feedback(
             type=Feedback.MANICURE,
             feedback='Test',
             description='Test nails description',
