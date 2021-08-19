@@ -43,12 +43,12 @@
         {% else %}
             <h2 class='text-center' style="color: #e6a756">These are his feedback</h2>
         {% endif %}
-        {% include 'common/nails_all.html' %}
+        {% include 'common/feedback_all.html' %}
     {% else %}
         <div class="text-center">
             {% if profile.user_id == request.user.id %}
                 <h2 style="color: #e6a756">You have no feedback</h2>
-                <a href="{% url 'create nails' %}" class="btn btn-success">Leave Feedback</a>
+                <a href="{% url 'feedback create' %}" class="btn btn-success">Leave Feedback</a>
             {% else %}
                 <h2 style="color: #e6a756">This user has no feedback</h2>
             {% endif %}

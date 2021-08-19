@@ -1,10 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.
-from nails_project.nails.models import Nails, Like
+from nails_project.nails.models import Feedback, Like
 
 
-@admin.register(Nails)
+@admin.register(Feedback)
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('type', 'feedback', 'description', 'image', 'user')
     list_filter = ('type', 'feedback', 'user')

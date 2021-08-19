@@ -3,7 +3,7 @@ from django.db.models.signals import post_save, pre_save, pre_delete
 from django.dispatch import receiver
 from cloudinary import uploader
 from nails_project.accounts.models import Profile
-from nails_project.nails.models import Nails
+from nails_project.nails.models import Feedback
 
 UserModel = get_user_model()
 
@@ -42,7 +42,7 @@ def delete_media_when_account_deleted(sender, instance, **kwargs):
     if instance.pk:
         try:
             old_avatar = Profile.objects.get(pk=instance.pk).profile_image
-            old_user_media = Nails.objects.filter(user_id=instance.pk)
+            old_user_media = Feedback.objects.filter(user_id=instance.pk)
         except Profile.DoesNotExist:
             return
         else:

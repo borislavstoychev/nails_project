@@ -1,4 +1,4 @@
-from nails_project.nails.models import Nails, Like
+from nails_project.nails.models import Feedback, Like
 from tests.base.mixins import UserTestUtils, NailsTestUtils
 from tests.base.tests import NailsProjectTestCase
 from django.core.exceptions import ValidationError
@@ -9,7 +9,7 @@ class LikeModelTests(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
     def test_saveModel_whenValid_shouldBeValid(self):
         nails_user = self.create_user(email='nails@user.com', password='12345qwe', is_active=True)
         nails = self.create_nails(
-            type=Nails.MANICURE,
+            type=Feedback.MANICURE,
             feedback='Test',
             description='Test nails description',
             image='path/to/image.png',
@@ -28,7 +28,7 @@ class LikeModelTests(NailsTestUtils, UserTestUtils, NailsProjectTestCase):
 
     def test_saveModel_whenInvalid_shouldBeInvalid(self):
         nails = self.create_nails(
-            type=Nails.MANICURE,
+            type=Feedback.MANICURE,
             feedback='Test',
             description='Test nails description',
             image='path/to/image.png',

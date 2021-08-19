@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse
 from nails_project import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
-from nails_project.nails.models import Nails
+from nails_project.nails.models import Feedback
 from tests.base.tests import NailsProjectTestCase
 
 UserModel = get_user_model()
@@ -23,9 +23,9 @@ class SignalsNails(NailsProjectTestCase):
             content_type='image/jpeg')
         self.client.force_login(self.user)
 
-        response = self.client.post(reverse('create nails'), data={
-            "type": Nails.MANICURE,
-            'feedback': Nails.POSITIVE,
+        response = self.client.post(reverse('feedback create'), data={
+            "type": Feedback.MANICURE,
+            'feedback': Feedback.POSITIVE,
             'description': 'TEst nails description',
             'image': file,
             'user': self.user

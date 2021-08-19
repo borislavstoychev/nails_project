@@ -5,10 +5,10 @@ from nails_project.nails import views
 urlpatterns = [
     path('', views.HomeView.as_view(), name='home page'),
     path('about/', views.AboutView.as_view(), name='about'),
-    path('feedback/', views.NailsListView.as_view(), name='list nails'),
-    path('details/<int:pk>/', views.NailsDetailsView.as_view(), name='nails details'),
-    path('like/<int:pk>/', views.NailsLikeView.as_view(), name='like nails'),
-    path('create/', views.NailsCreateView.as_view(), name='create nails'),
-    path('edit/<int:pk>', views.NailsEditView.as_view(), name='edit nails'),
-    path('delete/<int:pk>', views.NailsDeleteView.as_view(), name='delete nails'),
+    path('feedback/', views.FeedbackListView.as_view(), name='feedback list'),
+    path('feedback-details/<int:pk>/', views.FeedbackDetailsView.as_view(), name='feedback details'),
+    path('feedback-like/<int:pk>/', views.FeedbackLikeView.as_view(), name='feedback like'),
+    path('feedback-create/', views.FeedbackCreateView.as_view(), name='feedback create'),
+    path('feedback-edit/<int:pk>', views.FeedbackEditView.as_view(), name='feedback edit'),
+    path('feedback-delete/<int:pk>', views.FeedbackDeleteView.as_view(), name='feedback delete'),
 ]

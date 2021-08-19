@@ -78,15 +78,15 @@ The ***profile*** has the following fields:
 - age - IntegerField
 - profile image - ImageField
 
-#### 2.2. Nails <a class="anchor" id="section_2_2"></a>
+#### 2.2. Feedback <a class="anchor" id="section_2_2"></a>
 
-The ***nails*** could be either public or private. It can be viewed by all types of users but created, edited, and
-deleted only by its author. The author can't like his own ***nails***. Only the other users
+The ***feedback*** could be either public or private. It can be viewed by all types of users but created, edited, and
+deleted only by its author. The author can't like his own ***feedback***. Only the other users
 can like it.
 
-##### 2.2.1 Nails Characteristics <a class="anchor" id="section_2_2_1"></a>
+##### 2.2.1 Feedback Characteristics <a class="anchor" id="section_2_2_1"></a>
 
-The ***nails*** has the following fields:
+The ***feedback*** has the following fields:
 
 - type - CharField with max length 10 chars and choices options
 - feedback - CharField with max length 10 chars and choices options
@@ -94,15 +94,15 @@ The ***nails*** has the following fields:
 - user - ForeignKey relation with nails user
 
 
-##### 2.2.2 Nails Likes <a class="anchor" id="section_2_2_2"></a>
+##### 2.2.2 Feedback Likes <a class="anchor" id="section_2_2_2"></a>
 
-The ***nails likes*** are public. It can be viewed by all types of users. The author and
-anonymous users can't like the ***nails***. Only the other users can like it. Once the like object is created by a
+The ***feedback likes*** are public. It can be viewed by all types of users. The author and
+anonymous users can't like the ***feedback***. Only the other users can like it. Once the like object is created by a
 single user, can be  deleted on clicked again.
 
-The ***nails likes*** has the following fields:
+The ***feedback likes*** has the following fields:
 
-- nails - ForeignKey relation with nails
+- feedback - ForeignKey relation with Feedback
 - user - ForeignKey relation with nails user
 
 

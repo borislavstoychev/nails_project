@@ -9,7 +9,7 @@ from cloudinary.models import CloudinaryField
 UserModel = get_user_model()
 
 
-class Nails(models.Model):
+class Feedback(models.Model):
     POSITIVE = 'Positive'
     NEGATIVE = 'Negative'
     FEEDBACK_TYPE = (
@@ -35,7 +35,7 @@ class Nails(models.Model):
 
 
 class Like(models.Model):
-    nails = models.ForeignKey(Nails, on_delete=models.CASCADE)
+    nails = models.ForeignKey(Feedback, on_delete=models.CASCADE)
     user = models.ForeignKey(
         UserModel,
         on_delete=models.CASCADE,

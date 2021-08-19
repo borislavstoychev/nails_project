@@ -3,8 +3,8 @@ from django.views import generic
 from django.shortcuts import redirect
 from django.contrib.auth import mixins as auth_mixins
 from django.urls import reverse_lazy
-from nails_project.nails.forms import NailsForm
-from nails_project.nails.models import Nails, Like
+from nails_project.nails.forms import FeedbackForm
+from nails_project.nails.models import Feedback, Like
 
 
 class HomeView(generic.TemplateView):
@@ -15,15 +15,15 @@ class AboutView(generic.TemplateView):
     template_name = 'nails/about.html'
 
 
-class NailsListView(generic.ListView):
-    model = Nails
-    template_name = 'nails/nails_list.html'
+class FeedbackListView(generic.ListView):
+    model = Feedback
+    template_name = 'nails/feedback_list.html'
     context_object_name = 'nails'
 
 
-class NailsDetailsView(generic.DetailView):
-    model = Nails
-    template_name = 'nails/nails_details.html'
+class FeedbackDetailsView(generic.DetailView):
+    model = Feedback
+    template_name = 'nails/feedback_details.html'
     context_object_name = 'nails'
 
     def get_context_data(self, **kwargs):
@@ -35,11 +35,11 @@ class NailsDetailsView(generic.DetailView):
         return context
 
 
-class NailsLikeView(auth_mixins.LoginRequiredMixin, generic.View):
+class FeedbackLikeView(auth_mixins.LoginRequiredMixin, generic.View):
 
     def get(self, request, **kwargs):
         user_profile = self.request.user
-        nails = Nails.objects.get(pk=kwargs['pk'])
+        nails = Feedback.objects.get(pk=kwargs['pk'])
         like = nails.like_set.filter(user_id=user_profile.id).first()
         if like:
             like.delete()
@@ -50,23 +50,23 @@ class NailsLikeView(auth_mixins.LoginRequiredMixin, generic.View):
             )
             like.save()
 
-        return redirect('nails details', nails.id)
+        return redirect('feedback details', nails.id)
 
     def dispatch(self, request, *args, **kwargs):
         user_profile = self.request.user
-        nails = Nails.objects.get(pk=kwargs['pk'])
+        nails = Feedback.objects.get(pk=kwargs['pk'])
         if nails.user_id == user_profile.id:
             return self.handle_no_permission()
         return super().dispatch(request, *args, **kwargs)
 
 
-class NailsCreateView(auth_mixins.LoginRequiredMixin, generic.CreateView):
-    template_name = 'nails/nails_create.html'
-    model = Nails
-    form_class = NailsForm
+class FeedbackCreateView(auth_mixins.LoginRequiredMixin, generic.CreateView):
+    template_name = 'nails/feedback_create.html'
+    model = Feedback
+    form_class = FeedbackForm
 
     def get_success_url(self):
-        url = reverse_lazy('list nails')
+        url = reverse_lazy('feedback list')
         return url
 
     def form_valid(self, form):
@@ -76,13 +76,14 @@ class NailsCreateView(auth_mixins.LoginRequiredMixin, generic.CreateView):
         return super().form_valid(form)
 
 
-class NailsEditView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
-    template_name = 'nails/nails_edit.html'
-    model = Nails
-    form_class = NailsForm
+class FeedbackEditView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
+    template_name = 'nails/feedback_edit.html'
+    model = Feedback
+    form_class = FeedbackForm
+    context_object_name = 'nails'
 
     def get_success_url(self):
-        url = reverse_lazy('nails details', kwargs={'pk': self.object.id})
+        url = reverse_lazy('feedback details', kwargs={'pk': self.object.id})
         return url
 
     def dispatch(self, request, *args, **kwargs):
@@ -92,10 +93,10 @@ class NailsEditView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
         return super().dispatch(request, *args, **kwargs)
 
 
-class NailsDeleteView(auth_mixins.LoginRequiredMixin, generic.DeleteView):
-    model = Nails
-    template_name = 'nails/nails_delete.html'
-    success_url = reverse_lazy('list nails')
+class FeedbackDeleteView(auth_mixins.LoginRequiredMixin, generic.DeleteView):
+    model = Feedback
+    template_name = 'nails/feedback_delete.html'
+    success_url = reverse_lazy('feedback list')
 
     def dispatch(self, request, *args, **kwargs):
         nails = self.get_object()

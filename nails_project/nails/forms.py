@@ -1,11 +1,11 @@
 from django import forms
 
 from nails_project.core.mixins import BootstrapFormMixin
-from nails_project.nails.models import Nails
+from nails_project.nails.models import Feedback
 
 
-class NailsForm(BootstrapFormMixin, forms.ModelForm):
+class FeedbackForm(BootstrapFormMixin, forms.ModelForm):
 
     class Meta:
-        model = Nails
+        model = Feedback
         exclude = ('user', )

@@ -4,14 +4,14 @@
     <div class="container">
         <form class="w-50 m-auto" method="post"
               style="border: 1px solid grey; color: #e6a756; margin: 10% 0%; padding: 5% 5%"
-              action="{% url 'edit nails' nails.pk %}" enctype="multipart/form-data">
+              action="{% url 'feedback edit' nails.pk %}" enctype="multipart/form-data">
             <h2>Edit Feedback</h2>
             {% csrf_token %}
             {{ form }}
             <p></p>
             <img id="img_preview" src="{{ nails.image.url }}" class="w-50 rounded mx-auto d-block" alt=""/>
             <button class="btn btn-primary mt-2" type="submit">Edit</button>
-            <a class="btn btn-danger mt-2" style="float: right;" href="{% url 'delete nails' nails.id %}">Delete Feedback</a>
+            <a class="btn btn-danger mt-2" style="float: right;" href="{% url 'feedback delete' nails.id %}">Delete Feedback</a>
             <p></p>
             <span><a href="javascript:history.back()">  Go back</a></span>
         </form>

@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.urls import reverse
 from nails_project.accounts.models import Profile
-from nails_project.nails.models import Nails
+from nails_project.nails.models import Feedback
 from tests.base.mixins import UserTestUtils
 from tests.base.tests import NailsProjectTestCase
 
@@ -25,8 +25,8 @@ class ProfileUpdateDetailsTest(UserTestUtils, NailsProjectTestCase):
         self.assertEqual(self.user.id, response.context['profile'].user_id)
 
     def test_getDetails_whenLoggedInUserWithFeedback_shouldGetDetails(self):
-        nails = Nails.objects.create(
-            type=Nails.MANICURE,
+        nails = Feedback.objects.create(
+            type=Feedback.MANICURE,
             feedback='Test',
             description='TEst nails description',
             image='path/to/image.png',

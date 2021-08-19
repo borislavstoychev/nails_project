@@ -91,7 +91,7 @@ class ProfileUpdateView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the nails
-        context['nails'] = self.get_object().user.nails_set.all()
+        context['nails'] = self.get_object().user.feedback_set.all()
         return context
 
 

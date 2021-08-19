@@ -3,7 +3,7 @@ from django.test import override_settings
 from django.core.files.uploadedfile import SimpleUploadedFile
 import tempfile
 from nails_project import settings
-from nails_project.nails.models import Nails
+from nails_project.nails.models import Feedback
 from tests.base.tests import NailsProjectTestCase
 import random
 from django.core.exceptions import ValidationError
@@ -16,8 +16,8 @@ class TestNailsModel(NailsProjectTestCase):
     @override_settings(MEDIA_ROOT=tempfile.gettempdir())
     def test_saveModel_whenValid_shouldBeValid(self):
         data = {
-            'type': Nails.MANICURE,
-            'feedback': Nails.POSITIVE,
+            'type': Feedback.MANICURE,
+            'feedback': Feedback.POSITIVE,
             'description': "description",
             'image': SimpleUploadedFile(
                 name=self.file_name,
@@ -27,7 +27,7 @@ class TestNailsModel(NailsProjectTestCase):
             "user": self.user
 
         }
-        obj = Nails(**data)
+        obj = Feedback(**data)
         obj.full_clean()
         obj.save()
         self.assertEqual('Manicure', obj.type)
@@ -38,55 +38,55 @@ class TestNailsModel(NailsProjectTestCase):
 
     def test_saveModel_whenInvalid_shouldBeInvalid_imageError(self):
         data = {
-            'type': Nails.MANICURE,
-            'feedback': Nails.POSITIVE,
+            'type': Feedback.MANICURE,
+            'feedback': Feedback.POSITIVE,
             'description': "description",
             'image': None,
             "user": self.user,
         }
 
         with self.assertRaises(ValidationError) as error:
-            obj = Nails(**data)
+            obj = Feedback(**data)
             obj.full_clean()
             obj.save()
         self.assertIsNotNone(error)
-        self.assertFalse(Nails.objects.filter(pk=obj.id).exists())
+        self.assertFalse(Feedback.objects.filter(pk=obj.id).exists())
 
     def test_saveModel_whenInvalid_shouldBeInvalid_descriptionError(self):
         data = {
-            'type': Nails.MANICURE,
-            'feedback': Nails.POSITIVE,
+            'type': Feedback.MANICURE,
+            'feedback': Feedback.POSITIVE,
             'description': None,
             'image': 'image.jpg',
             "user": self.user,
         }
 
         with self.assertRaises(ValidationError) as error:
-            obj = Nails(**data)
+            obj = Feedback(**data)
             obj.full_clean()
             obj.save()
         self.assertIsNotNone(error)
-        self.assertFalse(Nails.objects.filter(pk=obj.id).exists())
+        self.assertFalse(Feedback.objects.filter(pk=obj.id).exists())
 
     def test_saveModel_whenInvalid_shouldBeInvalid_userError(self):
         data = {
-            'type': Nails.MANICURE,
-            'feedback': Nails.POSITIVE,
+            'type': Feedback.MANICURE,
+            'feedback': Feedback.POSITIVE,
             'description': "description",
             'image': "None",
             "user": None,
         }
 
         with self.assertRaises(ValidationError) as error:
-            obj = Nails(**data)
+            obj = Feedback(**data)
             obj.full_clean()
             obj.save()
         self.assertIsNotNone(error)
-        self.assertFalse(Nails.objects.filter(pk=obj.id).exists())
+        self.assertFalse(Feedback.objects.filter(pk=obj.id).exists())
 
     def test_saveModel_whenInvalid_shouldBeInvalid_feedbackError(self):
         data = {
-            'type': Nails.MANICURE,
+            'type': Feedback.MANICURE,
             'feedback': None,
             'description': "description",
             'image': 'image.jpg',
@@ -94,24 +94,24 @@ class TestNailsModel(NailsProjectTestCase):
         }
 
         with self.assertRaises(ValidationError) as error:
-            obj = Nails(**data)
+            obj = Feedback(**data)
             obj.full_clean()
             obj.save()
         self.assertIsNotNone(error)
-        self.assertFalse(Nails.objects.filter(pk=obj.id).exists())
+        self.assertFalse(Feedback.objects.filter(pk=obj.id).exists())
 
     def test_saveModel_whenInvalid_shouldBeInvalid_typeError(self):
         data = {
             'type': None,
-            'feedback': Nails.POSITIVE,
+            'feedback': Feedback.POSITIVE,
             'description': "description",
             'image': 'image.jpg',
             "user": self.user,
         }
 
         with self.assertRaises(ValidationError) as error:
-            obj = Nails(**data)
+            obj = Feedback(**data)
             obj.full_clean()
             obj.save()
         self.assertIsNotNone(error)
-        self.assertFalse(Nails.objects.filter(pk=obj.id).exists())
+        self.assertFalse(Feedback.objects.filter(pk=obj.id).exists())
