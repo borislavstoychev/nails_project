@@ -110,7 +110,7 @@ The ***feedback likes*** has the following fields:
 
 #### 2.3. Schedule <a class="anchor" id="section_3_2"></a>
 
-The ***schedule*** could be either public end private. It can be viewed by all types of users but created, edited, and
+The ***schedule*** could be either public or private. It can be viewed by all types of users but created, edited, and
 deleted only by superuser and staff user. 
 
 ##### 2.3.1 Schedule Characteristics <a class="anchor" id="section_3_2_1"></a>
@@ -139,6 +139,6 @@ The ***schedule*** has the following fields:
 - :heavy_check_mark: Additional functionality, not explicitly described in this section, will be counted as a bonus if it has practical
   usage.
   
-### 5. Deploying on Heroku <a class="anchor" id="chapter5"></a> - [nails-project.herokuapp.com/](http://nails-project.herokuapp.com/)
+### 5. Deploying on Heroku <a class="anchor" id="chapter5"></a> - [nails-project.herokuapp.com](http://nails-project.herokuapp.com/)
 - Using Git (Heroku Git, Heroku CLI)
 - Using Github
