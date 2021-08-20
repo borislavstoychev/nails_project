@@ -14,6 +14,7 @@
         * [2.2.2. Feedback Likes](#section_2_2_2)
 * [3. Tests Coverage](#chapter3)
 * [4. Additional Developments](#chapter4)
+* [5. Deploying on Heroku](#chapter5)
 
 ### 1. Introduction <a class="anchor" id="chapter1"></a>
 
@@ -108,6 +109,8 @@ The ***feedback likes*** has the following fields:
 
 ### 3. Tests Coverage <a class="anchor" id="chapter3"></a>
 
+![image](https://user-images.githubusercontent.com/67734870/130222649-0e810fb8-00d3-49b1-b3c3-9ca9ad5e716b.png)
+![image](https://user-images.githubusercontent.com/67734870/130222826-c5bd9b94-88fc-40d6-9b31-837e424ba766.png)
 
 ### 4. Additional Developments <a class="anchor" id="chapter4"></a>
 
@@ -119,3 +122,7 @@ The ***feedback likes*** has the following fields:
 - :x: Implement Microservice architecture in your application.
 - :heavy_check_mark: Additional functionality, not explicitly described in this section, will be counted as a bonus if it has practical
   usage.
+  
+### 5. Deploying on Heroku <a class="anchor" id="chapter5"></a> - [nails-project.herokuapp.com/](http://nails-project.herokuapp.com/)
+- Using Git (Heroku Git, Heroku CLI)
+- Using Github
