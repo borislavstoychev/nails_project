@@ -12,6 +12,8 @@
     * [2.2. Feedback](#section_2_2)
         * [2.2.1. Feedback Characteristics](#section_2_2_1)
         * [2.2.2. Feedback Likes](#section_2_2_2)
+    * [2.3. Schedule](#section_3_2)
+        * [2.2.1. Schedule Characteristics](#section_3_2_1)
 * [3. Tests Coverage](#chapter3)
 * [4. Additional Developments](#chapter4)
 * [5. Deploying on Heroku](#chapter5)
@@ -105,6 +107,20 @@ The ***feedback likes*** has the following fields:
 
 - feedback - ForeignKey relation with Feedback
 - user - ForeignKey relation with nails user
+
+#### 2.3. Schedule <a class="anchor" id="section_3_2"></a>
+
+The ***schedule*** could be either public end private. It can be viewed by all types of users but created, edited, and
+deleted only by superuser and staff user. 
+
+##### 2.3.1 Schedule Characteristics <a class="anchor" id="section_3_2_1"></a>
+
+The ***schedule*** has the following fields:
+
+- date - DateField 
+- start_time - TimeField
+- end_time - TimeField
+- available - BooleanField
 
 
 ### 3. Tests Coverage <a class="anchor" id="chapter3"></a>
