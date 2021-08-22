@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9_mxiy@wwdmb&ipixf$da*g1z6w%86j=qm0p1s#_fwm_*-phvx'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = False
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(' ')
 
@@ -163,8 +163,8 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # cloudinary configuration
 cloudinary.config(
     cloud_name="dveogwez3",
-    api_key=os.environ.get('CLOUDINARY_API_KEY', '732635235387472'),
-    api_secret=os.environ.get('CLOUDINARY_API_SECRET', 'BKCV2drakVfajaxoSK7NCWXMAMw'),
+    api_key=os.environ.get('CLOUDINARY_API_KEY'),
+    api_secret=os.environ.get('CLOUDINARY_API_SECRET'),
     secure=True,
 )
 
