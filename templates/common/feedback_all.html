@@ -5,14 +5,14 @@
                 <div class="product-item-title d-flex">
                     <div class="bg-faded p-5 d-flex ms-auto rounded">
                         <h2 class="section-heading mb-0">
-                            <span class="text-lowercase"><a href="{% url 'profile details' nail.user_id %}">{{ nail.user }}</a></span>
+                            <span class="text-lowercase"><a href="{% url 'profile details' nail.user_id %}">{% include 'common/avatar_details.html' %}{{ nail.user }}</a></span>
                             <span class="section-heading-upper">{{ nail.type }}</span>
                             <span class="section-heading-lower">{{ nail.feedback }}</span>
                         </h2>
                     </div>
                 </div>
                     <a href="{% url 'feedback details' nail.id %}">
-                    <img class="card-img-top mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
+                    <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
                          src="{{ nail.image.url }}"
                          alt="..."/></a>
                     <div class="product-item-description d-flex me-auto">

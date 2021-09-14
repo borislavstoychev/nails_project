@@ -3,8 +3,8 @@ from django.views import generic
 from django.shortcuts import redirect
 from django.contrib.auth import mixins as auth_mixins
 from django.urls import reverse_lazy
-from nails_project.nails.forms import FeedbackForm
-from nails_project.nails.models import Feedback, Like
+from nails_project.nails.forms import FeedbackForm, CommentForm
+from nails_project.nails.models import Feedback, Like, Comment
 
 
 class HomeView(generic.TemplateView):
@@ -32,6 +32,7 @@ class FeedbackDetailsView(generic.DetailView):
         nails.likes_count = nails.like_set.count()
         context['is_owner'] = nails.user == self.request.user
         context['is_liked_by_user'] = nails.like_set.filter(user_id=self.request.user.id).exists()
+        context['comments'] = nails.comment_set.all()
         return context
 
 
@@ -101,5 +102,49 @@ class FeedbackDeleteView(auth_mixins.LoginRequiredMixin, generic.DeleteView):
     def dispatch(self, request, *args, **kwargs):
         nails = self.get_object()
         if nails.user_id != request.user.id:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
+
+
+class FeedbackCommentView(auth_mixins.LoginRequiredMixin, generic.FormView):
+    form_class = CommentForm
+    template_name = 'nails/feedback_comment.html'
+
+    def form_valid(self, form):
+        comment = form.save(commit=False)
+        comment.user = self.request.user
+        comment.feedback = Feedback.objects.get(pk=self.kwargs['pk'])
+        comment.save()
+        return redirect('feedback details', self.kwargs['pk'])
+
+
+class CommentUpdateView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
+    model = Comment
+    context_object_name = 'comment'  # your own name for the list as a template variable
+    form_class = CommentForm
+    template_name = 'nails/feedback_comment_update.html'
+
+    def get_success_url(self):
+        url = reverse_lazy('feedback details', kwargs={'pk': self.object.feedback.id})
+        return url
+
+    def dispatch(self, request, *args, **kwargs):
+        comment = self.get_object()
+        if comment.user_id != request.user.id:
+            return self.handle_no_permission()
+        return super().dispatch(request, *args, **kwargs)
+
+
+class CommentDeleteView(auth_mixins.LoginRequiredMixin, generic.DeleteView):
+    model = Comment
+    template_name = 'nails/feedback_comment_delete.html'
+
+    def get_success_url(self):
+        url = reverse_lazy('feedback details', kwargs={'pk': self.object.feedback.id})
+        return url
+
+    def dispatch(self, request, *args, **kwargs):
+        comment = self.get_object()
+        if comment.user_id != request.user.id:
             return self.handle_no_permission()
         return super().dispatch(request, *args, **kwargs)

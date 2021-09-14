@@ -1,0 +1,11 @@
+{% extends 'common/base.html' %}
+{% block content %}
+<div class="container">
+        <form method="post" style="border: 1px solid grey; color: #e6a756; margin: 10% 0%; padding: 5% 5%">
+            <h2>Leave comment</h2>
+            {% csrf_token %}
+            {{ form }}
+            <button class="btn btn-primary mt-2" type="submit">Comment</button>
+        </form>
+    </div>
+{% endblock %}

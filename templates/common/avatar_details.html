@@ -1,0 +1,6 @@
+{% if nail.user.profile.profile_image %}
+    <img src="{{ nail.user.profile.profile_image.url }}" alt="Avatar" class="avatar">
+{% else %}
+    <img src="/static/assets/img/profile.jpg" alt="Avatar"
+         class="avatar">
+{% endif %}

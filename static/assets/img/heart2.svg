@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="533.3333333333333" height="533.3333333333333" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient1093">
+   <stop stop-color="#ffffe8" stop-opacity="0.65" offset="0" id="stop1094"/>
+   <stop stop-color="#ffffff" stop-opacity="0" offset="1" id="stop1095"/>
+  </linearGradient>
+  <linearGradient xlink:href="#linearGradient1093" id="linearGradient1096"/>
+  <linearGradient xlink:href="#linearGradient1093" id="linearGradient1097"/>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g id="g833">
+   <path fill="#ffffff" fill-rule="evenodd" stroke="#000000" stroke-width="10" stroke-linejoin="round" id="path737" d="m248.75,477.5c-228.75,-201.25 -285,-367.5 -160,-440c102.5,-30 143.75,70 158.75,125c12.5,-52.5 73.75,-157.5 160,-125c123.333008,46.25 76.666992,226.25 -158.75,440z"/>
+   <path fill="url(#linearGradient1096)" fill-rule="evenodd" stroke-width="1pt" id="path738" d="m100,45c0,0 -70,35 -67.5,78.75c-22.5,107.5 153.75,291.25 168.75,298.75c-50,-112.5 -137.5,-337.5 -101.25,-377.5z"/>
+   <path fill="url(#linearGradient1097)" fill-rule="evenodd" stroke-width="1pt" id="path739" d="m261.25,148.75c16.25,-47.5 58.75,-107.5 98.75,-110c78.75,6.25 -50,42.5 -98.75,110z"/>
+  </g>
+ </g>
+</svg>

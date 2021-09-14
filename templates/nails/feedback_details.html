@@ -1,4 +1,5 @@
 {% extends 'common/base.html' %}
+{% load static %}
 {% block content %}
     <section class="page-section">
         <div class="container">
@@ -6,7 +7,8 @@
                 <div class="product-item-title d-flex">
                     <div class="bg-faded p-5 d-flex ms-auto rounded">
                         <h2 class="section-heading mb-0">
-                            <span class="text-lowercase"><a href="{% url 'profile details' nails.user_id %}">{{ nails.user }}</a></span>
+                            <span class="text-lowercase"><a
+                                    href="{% url 'profile details' nails.user_id %}">{{ nails.user }}</a></span>
                             <span class="section-heading-upper">{{ nails.type }}</span>
                             <span class="section-heading-lower">{{ nails.feedback }}</span>
                         </h2>
@@ -17,22 +19,55 @@
                         <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
                              src="{{ nails.image.url }}"
                              alt="..."/></a>
-                    <div class="product-item-description d-flex me-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">{{ nails.description }}</p>
-                            <p class="mt-2">Likes: {{ nails.likes_count }}</p>
+                    <div class="product-item-description me-auto">
+                        <div class="bg-faded p-2 rounded" style="overflow-wrap: break-word"><p
+                                class="mb-0">{{ nails.description }}</p>
+                            <a href="{% url 'comment feedback' nails.id %}">
+                                <img src="{% static 'assets/img/message.svg' %}"
+                                     style="width: 25px; height: 20px;" alt="heart">
+                            </a>
                         </div>
                     </div>
                 {% else %}
                     <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"
                          src="{{ nails.image.url }}"
                          alt="..."/>
-                    <div class="product-item-description d-flex me-auto">
-                        <div class="bg-faded p-5 rounded"><p class="mb-0">{{ nails.description }}</p>
-                            <a href="{% url 'feedback like' nails.id %}">Like</a>
-                            <p class="mt-2">Likes: {{ nails.likes_count }}</p>
+                    <div class="product-item-description me-auto">
+                        <div class="bg-faded p-2 rounded" style="overflow-wrap: break-word"><p
+                                class="mb-0">{{ nails.description }}</p>
+                            {% if not is_liked_by_user %}
+                                <a href="{% url 'feedback like' nails.id %}">
+                                    <img src="{% static 'assets/img/heart2.svg' %}"
+                                         style="width: 25px; height: 20px;" alt="heart"></a>
+                            {% else %}
+                                <a href="{% url 'feedback like' nails.id %}">
+                                    <img src="{% static 'assets/img/heart.svg' %}"
+                                         style="width: 25px; height: 20px;" alt="heart">
+                                </a>
+                            {% endif %}
+                            <a href="{% url 'comment feedback' nails.id %}">
+                                <img src="{% static 'assets/img/message.svg' %}"
+                                     style="width: 25px; height: 20px;" alt="heart">
+                            </a>
                         </div>
                     </div>
                 {% endif %}
+                <p></p>
+                <div class="product-item-title">
+                    {% if user.is_authenticated %}
+                        {% for comment in comments %}
+                            <div class="card border-secondary mb-3">
+                                <div class="row row-cols-1 justify-content-between">
+                                    <div class="col text-start">
+                                        {% include 'common/avatar.html' %}
+                                        {{ comment.user }}:
+                                        <h5><em>{{ comment.comment }}</em></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
         </div>
     </section>

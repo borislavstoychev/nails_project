@@ -42,4 +42,13 @@ class Like(models.Model):
     )
 
 
+class Comment(models.Model):
+    feedback = models.ForeignKey(Feedback, on_delete=models.CASCADE)
+    comment = models.TextField()
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+    )
+
+
 from .signals import *
