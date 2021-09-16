@@ -97,7 +97,7 @@ class CommentUpdateView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
     template_name = 'gallery/image_comment_update.html'
 
     def get_success_url(self):
-        url = reverse_lazy('image details', kwargs={'pk': self.object.feedback.id})
+        url = reverse_lazy('image details', kwargs={'pk': self.object.image.id})
         return url
 
     def dispatch(self, request, *args, **kwargs):
@@ -112,7 +112,7 @@ class CommentDeleteView(auth_mixins.LoginRequiredMixin, generic.DeleteView):
     template_name = 'nails/feedback_comment_delete.html'
 
     def get_success_url(self):
-        url = reverse_lazy('image details', kwargs={'pk': self.object.feedback.id})
+        url = reverse_lazy('image details', kwargs={'pk': self.object.image.id})
         return url
 
     def dispatch(self, request, *args, **kwargs):

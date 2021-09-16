@@ -9,6 +9,6 @@ urlpatterns = [
     path('image-details/<int:pk>/', views.GalleryDetailsView.as_view(), name='image details'),
     path('image-like/<int:pk>/', views.GalleryLikeView.as_view(), name='image like'),
     path('comment/<int:pk>/', views.GalleryCommentView.as_view(), name='comment image'),
-    path('comment-update/<int:pk>', views.CommentUpdateView.as_view(), name='update comment'),
-    path('comment-delete/<int:pk>', views.CommentDeleteView.as_view(), name='delete comment'),
+    path('comment-update/<int:pk>', views.CommentUpdateView.as_view(), name='update comment image'),
+    path('comment-delete/<int:pk>', views.CommentDeleteView.as_view(), name='delete comment image'),
 ]

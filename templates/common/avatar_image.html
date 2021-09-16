@@ -1,0 +1,23 @@
+{% if comment.user.profile.profile_image.url %}
+    {% if user.id == comment.user_id %}
+
+        <a href="{% url 'update comment image' comment.id %}">
+            <img src="{{ comment.user.profile.profile_image.url }}" alt="Avatar"
+                 class="avatar"></a>
+    {% else %}
+        <a href="{% url 'profile details' comment.user_id %}">
+            <img src="{{ comment.user.profile.profile_image.url }}" alt="Avatar"
+                 class="avatar"></a>
+    {% endif %}
+{% else %}
+    {% if user.id == comment.user_id %}
+
+        <a href="{% url 'update comment image' comment.id %}">
+            <img src="/static/assets/img/profile.jpg" alt="Avatar"
+                 class="avatar"></a>
+    {% else %}
+        <a href="{% url 'profile details' comment.user_id %}">
+            <img src="/static/assets/img/profile.jpg" alt="Avatar"
+                 class="avatar"></a>
+    {% endif %}
+{% endif %}

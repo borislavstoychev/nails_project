@@ -2,12 +2,12 @@
 {% block content %}
     <p></p>
     <div class="container">
-        <form method="post" action="{% url 'update comment' comment.id %}" style="border: 1px solid grey; color: #e6a756; margin: 10% 0%; padding: 5% 5%">
+        <form method="post" action="{% url 'update comment image' comment.id %}" style="border: 1px solid grey; color: #e6a756; margin: 10% 0%; padding: 5% 5%">
             <h2>Edit your comment</h2>
             {% csrf_token %}
             {{ form }}
             <button class="btn btn-primary mt-2" type="submit">Edit comment</button>
-            <a class="btn btn-danger mt-2" href="{% url 'delete comment' comment.id %}">Delete comment</a>
+            <a class="btn btn-danger mt-2" href="{% url 'delete comment image' comment.id %}">Delete comment</a>
         </form>
     </div>
 {% endblock %}
