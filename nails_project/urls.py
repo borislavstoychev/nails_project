@@ -24,4 +24,5 @@ urlpatterns = [
     path('profile/', include('nails_project.accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('schedule/', include('nails_project.schedule.urls')),
+    path('gallery/', include('nails_project.gallery.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

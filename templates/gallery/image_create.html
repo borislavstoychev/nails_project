@@ -1,0 +1,39 @@
+{% extends 'common/base.html' %}
+{% block content %}
+    <p></p>
+    <div class="text-center">
+        <div class="container">
+            <form class="w-50 m-auto" method="post"
+                  style="border: 1px solid grey; color: #e6a756; margin: 10% 0%; padding: 5% 5%"
+                  action="{% url 'add image' %}" enctype="multipart/form-data">
+                <h2>Add Photo</h2>
+                {% csrf_token %}
+                {{ form }}
+                <p></p>
+                <button class="btn btn-primary mt-2" type="submit">Add</button>
+                <p></p>
+                <span><a href="javascript:history.back()">  Go back</a></span>
+            </form>
+        </div>
+    </div>
+    <section>
+        <div class="container">
+
+            <h1 class="fw-light text-center text-lg-start mt-4 mb-0" style="color: #e6a756">Nails Gallery</h1>
+
+            <hr class="mt-2 mb-5" style="color: #e6a756">
+
+            <div class="row text-center text-lg-start">
+                {% for image in images %}
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <a href="{% url 'delete image' image.pk %}" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail gallery-cropper" src="{{ image.image.url }}"
+                                 alt="">
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <p></p>
+{% endblock %}

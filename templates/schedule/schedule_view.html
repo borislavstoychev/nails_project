@@ -1,4 +1,5 @@
 {% extends 'common/base.html' %}
+{% load static %}
 {% block content %}
     <section class="page-section cta">
         <div class="container">
@@ -12,15 +13,17 @@
                         {% include 'schedule/schedule_table.html' %}
                         <p class="address mb-5">
                             <em>
-                                <strong>116 Rockefeller Street</strong>
+                                <strong>Запази си час!</strong>
                                 <br/>
-                                Blagoevgrad, Petrich
+                                Message me  <a href='https://m.me/100007640386160'>
+            <img src="{% static 'assets/img/message.png'  %}" alt="Message"
+                 class="message-me"></a>
                             </em>
                         </p>
                         <p class="mb-0">
                             <small><em>Call me</em></small>
                             <br/>
-                            (+359) 585-8468
+                            <a href="tel:+359 893734689">+359 89 373 4689</a>
                         </p>
                     </div>
                 </div>

@@ -49,6 +49,7 @@ class Profile(models.Model):
     profile_image = CloudinaryField(
         resource_type='image',
         blank=True,
+        folder='profile'
     )
     is_complete = models.BooleanField(
         default=False,

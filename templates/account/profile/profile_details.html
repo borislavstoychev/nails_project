@@ -26,6 +26,7 @@
                         <a class="btn btn-danger mt-2" href="{% url 'profile delete' user.id %}">Delete profile</a>
                     {% else %}
                         <a class="btn btn-danger mt-2" href="{% url 'schedule create' %}">Make yor schedule</a>
+                        <a class="btn btn-danger mt-2" href="{% url 'add image' %}">Gallery</a>
                     {% endif %}
                     <p></p>
                     <span>If you want to change your password<a href="{% url 'password_change' %}"

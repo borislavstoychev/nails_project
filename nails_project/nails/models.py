@@ -27,6 +27,7 @@ class Feedback(models.Model):
     description = models.TextField(blank=False, max_length=200)
     image = CloudinaryField(
         resource_type='image',
+        folder='feedback'
     )
     user = models.ForeignKey(
         UserModel,
