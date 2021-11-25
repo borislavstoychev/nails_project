@@ -141,3 +141,7 @@ docker-compose.yml
 
 #media files
 media
+
+#vscode
+.vscode
+
