@@ -5,7 +5,7 @@ from nails_project.schedule.models import Schedule
 
 
 @admin.register(Schedule)
-class ProfileAdmin(admin.ModelAdmin):
+class ScheduleAdmin(admin.ModelAdmin):
     list_display = ('date', 'start_time', 'end_time')
     list_filter = ('date', )
     ordering = ('date',)

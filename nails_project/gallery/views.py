@@ -14,8 +14,12 @@ class GalleryCreateView(auth_mixins.LoginRequiredMixin, generic.FormView):
     template_name = 'gallery/image_create.html'
 
     def form_valid(self, form):
-        image = form.save(commit=False)
-        image.save()
+        data = form.save(commit=False)
+        description = form.cleaned_data['description']
+        images = self.request.FILES.getlist('image')
+        for image in images:
+            new_image = Gallery(image=image, description=description)
+            new_image.save() 
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
