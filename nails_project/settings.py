@@ -97,7 +97,6 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT', '5432'),
         'OPTIONS': {
             'sslmode': 'require',
-            'options': 'endpoint=ep-solitary-sea-05158395-pooler.us-east-1.postgres.vercel-storage.com',
         },
     }
 }
