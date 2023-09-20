@@ -14,7 +14,7 @@ from os.path import join
 from pathlib import Path
 import cloudinary as cloudinary
 import django_heroku
-import dj_database_url
+# import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.urls import reverse_lazy
@@ -88,9 +88,21 @@ WSGI_APPLICATION = 'nails_project.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('POSTGRES_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DATABASE', 'nails_db'),
+        'USER': os.environ.get('POSTGRES_USER', 'admin'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'borkata'),
+        'HOST': os.environ.get('POSTGRES_HOST', '127.0.0.1'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+        'OPTIONS': {
+            'sslmode': 'require',
+            'options': 'endpoint=ep-solitary-sea-05158395-pooler.us-east-1.postgres.vercel-storage.com',
+        },
+    }
 }
 
+# DATABASES['default'] = dj_database_url.config(default=os.e)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
