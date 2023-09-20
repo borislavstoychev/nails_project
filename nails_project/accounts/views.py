@@ -44,7 +44,7 @@ class SignUpView(generic.CreateView):
         # email = EmailMessage(
         #     mail_subject, message, settings.EMAIL_HOST_USER, to=[to_email]
         # )
-        send_mail(subject=mail_subject, message=message,from_email=None recipient_list=[to_email], fail_silently=True)
+        send_mail(subject=mail_subject, message=message,from_email=None, recipient_list=[to_email], fail_silently=True)
         # EmailThread(email).start()
         return render(self.request, 'account/auth/inactive_profile.html')
 
