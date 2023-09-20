@@ -18,7 +18,6 @@ from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.http import HttpResponse
-from django.conf import settings
 # from nails_project.core.email_threading import EmailThread
 
 UserModel = get_user_model()
@@ -45,7 +44,7 @@ class SignUpView(generic.CreateView):
         # email = EmailMessage(
         #     mail_subject, message, settings.EMAIL_HOST_USER, to=[to_email]
         # )
-        send_mail(subject=mail_subject, message=message, from_email=settings.EMAIL_HOST_USER, recipient_list=[to_email], fail_silently=True)
+        send_mail(subject=mail_subject, message=message, recipient_list=[to_email], fail_silently=True)
         # EmailThread(email).start()
         return render(self.request, 'account/auth/inactive_profile.html')
 
