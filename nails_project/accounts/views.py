@@ -14,10 +14,11 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
-from django.core.mail import EmailMessage, send_mail
+from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.conf import settings
 # from nails_project.core.email_threading import EmailThread
 
 UserModel = get_user_model()
@@ -41,10 +42,10 @@ class SignUpView(generic.CreateView):
             'token': default_token_generator.make_token(user),
         })
         to_email = form.cleaned_data.get('email')
-        email = EmailMessage(
-            mail_subject, message, to=[to_email]
-        )
-        send_mail(email)
+        # email = EmailMessage(
+        #     mail_subject, message, settings.EMAIL_HOST_USER, to=[to_email]
+        # )
+        send_mail(subject=mail_subject, message=message, from_email=settings.EMAIL_HOST_USER, recipient_list=[to_email], fail_silently=True)
         # EmailThread(email).start()
         return render(self.request, 'account/auth/inactive_profile.html')
 
