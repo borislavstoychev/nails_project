@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'nails_project.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get("POSTGRES_URL") + "?sslmode=require")
+    'default': dj_database_url.config(default=os.environ.get("DATABASAE_URL"))
 }
 
 # DATABASES['default'] = dj_database_url.config(default=os.e)
